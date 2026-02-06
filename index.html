@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine? ❤️ - Girija</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Floating Hearts Background -->
+  <div class="hearts-bg" id="heartsBg"></div>
+  
+  <!-- Message Bar -->
+  <header class="message-bar">
+    <h2 id="headline">FOR GIRIJA — MY EVERYTHING ❤️</h2>
+  </header>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" preload="auto" loop>
+    <source src="Vachindamma-(DJMaza).mp3" type="audio/mpeg">
+  </audio>
+  
+  <!-- Music Control -->
+  <button id="musicBtn" class="music-btn">🎵 Vachindamma</button>
+
+  <!-- Main Proposal Card -->
+  <main class="main-container">
+    <div class="card">
+      <h1 class="glow-title">Will you be my Valentine?</h1>
+      <div class="buttons">
+        <button class="btn yes glow-btn" id="yesBtn">
+          <span>Yes 💖</span>
+        </button>
+        <button class="btn no glow-btn" id="noBtn">
+          <span>No ❌</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Corner RED Hearts -->
+  <div class="hearts-corner">
+    <span class="heart">❤️</span>
+    <span class="heart">❤️</span>
+    <span class="heart">❤️</span>
+  </div>
+
+<!-- 🌹 YES OVERLAY - ORIGINAL ROSE DAY PERFECT -->
+<div id="yesOverlay" class="overlay">
+  <div class="overlay-content yes-content">
+    <h1>YES GIRU! YOU SAID YES! 🎉</h1>
+    <p class="highlight">I KNEW IT! 😍</p>
+    <p>I love you so much Girija 💕<br>You made me the happiest person alive!</p>
+    <p class="rose-tease">Stay tuned for Rose Day Giru! 🌹</p>
+    <p class="signature">— Rudra, your forever ❤️</p>
+    <button id="closeYes" class="overlay-btn">✨ Continue Magic ✨</button>
+  </div>
+</div>
+
+
+  <!-- NO OVERLAY -->
+  <div id="noOverlay" class="overlay">
+    <div class="overlay-content no-content">
+      <div class="emoji-explosion">❤️❤️❤️</div>
+      <h1>Even If You Say No</h1>
+      <p class="highlight">My heart will <span class="glow-text">ALWAYS</span> choose you ❤️</p>
+      <p class="gentle-text">Girija, no matter what you choose...</p>
+      <p class="gentle-text">I'll wait for you <span class="forever-glow">forever</span> 💕</p>
+      <p class="forever-love">I love you <span class="love-text">endlessly</span> ✨</p>
+      <button id="closeNo" class="overlay-btn premium-btn">← Back to Proposal</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

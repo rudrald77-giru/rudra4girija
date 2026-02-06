@@ -1,0 +1,520 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --purple-glow: rgba(168,85,247,0.8);
+  --purple-glow-deep: rgba(147,51,234,0.8);
+  --red-heart: #FF4444;
+  --red-glow: rgba(255,68,68,0.6);
+  --pink-text: #FF69B4;
+  --rose-pink: #FF6B9D;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E8D5F5 0%, #D4A7E8 50%, #C39EF1 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  overflow-x: hidden;
+  position: relative;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* RED Hearts Background */
+.hearts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart-float {
+  position: absolute;
+  font-size: 1.2rem;
+  color: var(--red-heart);
+  text-shadow: 0 0 15px var(--red-glow);
+  animation: floatHearts 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatHearts {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; transform: scale(1); }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
+}
+
+/* Message Bar - PINK TEXT + PURPLE GLOW */
+.message-bar {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(25px);
+  padding: 1.2rem 2.5rem;
+  border: 2px solid var(--pink-text);
+  border-radius: 25px;
+  box-shadow: 0 15px 35px var(--red-glow);
+  z-index: 100;
+  max-width: 90%;
+  text-align: center;
+}
+
+.message-bar h2 {
+  margin: 0;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  color: var(--pink-text);
+  text-shadow: 0 2px 20px var(--purple-glow), 0 0 30px var(--purple-glow);
+  animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 0 2px 10px var(--purple-glow); }
+  100% { text-shadow: 0 2px 25px var(--purple-glow-deep); }
+}
+
+/* Main Card */
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px 100px;
+  z-index: 20;
+  position: relative;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(25px);
+  border-radius: 30px;
+  padding: 3rem 2.5rem;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(168,85,247,0.3);
+  position: relative;
+  z-index: 10;
+}
+
+/* Main Title - RED TEXT + PURPLE GLOW */
+.glow-title {
+  font-size: clamp(28px, 7vw, 42px);
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  color: var(--red-heart);
+  text-shadow: 0 0 25px var(--purple-glow), 0 0 40px var(--purple-glow);
+  animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 1.2rem 2rem;
+  font-size: clamp(16px, 3.5vw, 20px);
+  font-weight: 700;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.yes {
+  background: linear-gradient(135deg, var(--pink-text), #FF8AB2);
+  color: white;
+}
+
+.no {
+  background: linear-gradient(135deg, var(--rose-pink), var(--red-heart));
+  color: white;
+}
+
+/* Music Button */
+.music-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  background: linear-gradient(135deg, var(--pink-text), var(--red-heart));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 1rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 50;
+  box-shadow: 0 10px 30px var(--red-glow);
+  transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px var(--red-glow);
+}
+
+.music-btn.playing {
+  animation: musicPulse 1.5s infinite;
+}
+
+@keyframes musicPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* RED Corner Hearts */
+.hearts-corner {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 30;
+}
+
+.heart {
+  font-size: 1.6rem;
+  color: var(--red-heart);
+  text-shadow: 0 0 15px var(--red-glow);
+  animation: bounceHeart 2s infinite;
+}
+
+@keyframes bounceHeart {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* OVERLAYS */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.overlay-content {
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(35px);
+  border-radius: 35px;
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+  transform: scale(0.7);
+  animation: popupReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes popupReveal {
+  0% { transform: scale(0.7) rotateX(20deg); opacity: 0; }
+  70% { transform: scale(1.03); }
+  100% { transform: scale(1) rotateX(0deg); opacity: 1; }
+}
+
+.emoji-explosion {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: emojiBounce 1s ease-in-out;
+}
+
+@keyframes emojiBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+
+/* 🎉 FORCED SMALL NORMAL SIZE - Works 100% */
+.yes-content h1 {
+  font-size: clamp(1.5em, 4vw, 2.5em) !important; /* EXTRA SMALL */
+  font-weight: 800 !important;
+  margin-bottom: 1.2rem !important;
+  color: #FF69B4 !important;
+  text-shadow: 0 0 35px rgba(168,85,247,0.9), 0 0 50px rgba(168,85,247,0.7) !important;
+  animation: yesCelebrate 2s ease-in-out infinite !important;
+}
+
+
+
+.yes-content .highlight {
+  font-size: 1.6em;
+  font-weight: 800;
+  color: #FF6B9D; /* ROSE PINK */
+  margin: 1.5rem 0;
+  text-shadow: 0 0 25px rgba(168,85,247,0.8); /* PURPLE GLOW */
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.yes-content .rose-tease {
+  color: #FF4444; /* RED */
+  font-weight: 700;
+  font-size: 1.3em;
+  margin: 1.8rem 0 1rem 0;
+  text-shadow: 0 0 25px rgba(168,85,247,0.7); /* PURPLE GLOW */
+  animation: roseTeaseGlow 2.5s ease-in-out infinite;
+}
+
+.signature {
+  color: #FF69B4; /* PINK */
+  font-weight: 800;
+  font-size: 1.4em;
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-shadow: 0 0 20px rgba(168,85,247,0.6); /* PURPLE GLOW */
+}
+
+@keyframes yesCelebrate {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.03); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); text-shadow: 0 0 25px rgba(168,85,247,0.8); }
+  50% { transform: scale(1.05); text-shadow: 0 0 40px rgba(168,85,247,1); }
+}
+
+@keyframes roseTeaseGlow {
+  0%, 100% { filter: drop-shadow(0 0 15px rgba(168,85,247,0.6)); }
+  50% { filter: drop-shadow(0 0 30px rgba(168,85,247,0.9)); }
+}
+
+/* NO CONTENT - PINK TEXT + PURPLE GLOW */
+.no-content h1 {
+  font-size: clamp(2.2em, 7vw, 4em);
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: var(--pink-text);
+  text-shadow: 0 0 30px var(--purple-glow), 0 0 45px var(--purple-glow);
+  animation: gentleFloat 3s ease-in-out infinite;
+}
+
+.no-content .highlight {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: var(--rose-pink);
+  margin: 1.2rem 0 1rem 0;
+  text-shadow: 0 0 25px var(--purple-glow);
+  animation: heartBeat 2s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.05); }
+  70% { transform: scale(1); }
+}
+
+.gentle-text {
+  color: #6B7280;
+  font-size: clamp(1.1em, 4vw, 1.25em);
+  margin: 1.2rem 0;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* MAGIC TEXT GLOW - All highlights */
+.highlight, .glow-text, .forever-glow, .love-text, .forever-love {
+  color: var(--rose-pink) !important;
+  text-shadow: 0 0 25px var(--purple-glow), 0 0 40px var(--purple-glow) !important;
+}
+
+.forever-love {
+  font-size: 1.6em;
+  margin: 2rem 0 1.5rem 0;
+  animation: eternalGlow 3s ease-in-out infinite;
+}
+
+@keyframes eternalGlow {
+  0%, 100% { text-shadow: 0 0 20px var(--purple-glow); }
+  50% { text-shadow: 0 0 45px var(--purple-glow-deep); }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Buttons */
+.overlay-btn {
+  background: linear-gradient(135deg, var(--pink-text), var(--red-heart));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 1.2rem 3rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 2rem;
+  box-shadow: 0 20px 45px var(--red-glow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.overlay-btn:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 25px 55px var(--red-glow);
+}
+
+.no-content .overlay-btn {
+  background: linear-gradient(135deg, var(--rose-pink), var(--red-heart));
+}
+
+.premium-btn {
+  padding: 1.3rem 3.2rem;
+  font-size: 1.2rem;
+  border-radius: 35px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .message-bar {
+    top: 10px;
+    padding: 1rem 1.8rem;
+    max-width: 95%;
+  }
+  
+  .card {
+    padding: 2.5rem 2rem;
+    margin: 20px;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .overlay-content {
+    padding: 2.5rem 2rem;
+    margin: 1rem;
+  }
+}
+/* 🌸 RESPONSIVE PINK TEXT - Perfect glow kept */
+.message-bar h2, .glow-title, .yes-content h1, .no-content h1 {
+  color: #FF69B4 !important; /* PINK */
+  text-shadow: 0 0 25px rgba(168,85,247,0.8), 0 0 40px rgba(168,85,247,0.6) !important; /* PURPLE GLOW */
+}
+
+.highlight, .forever-love, .glow-text {
+  color: #FF6B9D !important; /* ROSE PINK */
+}
+
+/* Mobile responsive text */
+@media (max-width: 480px) {
+  .message-bar h2 { font-size: clamp(18px, 5vw, 24px) !important; }
+  .glow-title { font-size: clamp(24px, 8vw, 36px) !important; }
+}
+/* 🌹 ROSE DAY YES POPUP - ORIGINAL PERFECT STYLES */
+.yes-content h1 {
+  font-size: clamp(2.5em, 8vw, 4.5em);
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: #FF69B4; /* PINK */
+  text-shadow: 0 0 35px rgba(168,85,247,0.9), 0 0 50px rgba(168,85,247,0.7); /* PURPLE GLOW */
+  animation: yesCelebrate 2s ease-in-out infinite;
+}
+
+.yes-content .highlight {
+  font-size: 1.6em;
+  font-weight: 800;
+  color: #FF6B9D; /* ROSE PINK */
+  margin: 1.5rem 0;
+  text-shadow: 0 0 25px rgba(168,85,247,0.8); /* PURPLE GLOW */
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.yes-content .rose-tease {
+  color: #FF4444; /* RED */
+  font-weight: 700;
+  font-size: 1.3em;
+  margin: 1.8rem 0 1rem 0;
+  text-shadow: 0 0 25px rgba(168,85,247,0.7); /* PURPLE GLOW */
+  animation: roseTeaseGlow 2.5s ease-in-out infinite;
+}
+
+.yes-content p {
+  color: #FF69B4; /* PINK */
+  font-size: 1.2em;
+  margin: 1rem 0;
+  line-height: 1.6;
+  text-shadow: 0 0 15px rgba(168,85,247,0.5);
+}
+
+.signature {
+  color: #FF69B4; /* PINK */
+  font-weight: 800;
+  font-size: 1.4em;
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-shadow: 0 0 20px rgba(168,85,247,0.6);
+}
+
+@keyframes yesCelebrate {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.03); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); text-shadow: 0 0 25px rgba(168,85,247,0.8); }
+  50% { transform: scale(1.05); text-shadow: 0 0 40px rgba(168,85,247,1); }
+}
+
+@keyframes roseTeaseGlow {
+  0%, 100% { filter: drop-shadow(0 0 15px rgba(168,85,247,0.6)); }
+  50% { filter: drop-shadow(0 0 30px rgba(168,85,247,0.9)); }
+}
